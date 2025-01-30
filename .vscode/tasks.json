@@ -65,8 +65,46 @@
         "panel": "dedicated",
         "reveal": "never",
         "group": "Build"
+      }
+      //"problemMatcher": ["$ts-webpack-watch"]
+    },
+    {
+      "type": "npm",
+      "script": "vite-dev",
+      "problemMatcher": {
+        "owner": "typescript",
+        "fileLocation": "relative",
+        "pattern": {
+          "regexp": "^([a-zA-Z]\\:/?([\\w\\-]/?)+\\.\\w+):(\\d+):(\\d+): (ERROR|WARNING)\\: (.*)$",
+          "file": 1,
+          "line": 3,
+          "column": 4,
+          "code": 5,
+          "message": 6
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*extension build start*$",
+          "endsPattern": "^.*extension (build|rebuild) success.*$"
+        }
       },
-      "problemMatcher": "$ts-webpack-watch"
+      "isBackground": true,
+      "presentation": {
+        "reveal": "never"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "type": "npm",
+      "script": "vite-build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
     }
   ]
 }

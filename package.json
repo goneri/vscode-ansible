@@ -1061,7 +1061,10 @@
     "test-compile": "yarn run clean && yarn run compile && tsc -p ./ --sourceMap",
     "test-e2e": "yarn run test-compile && MOCK_LIGHTSPEED_API=1 TEST_TYPE=e2e ./tools/test-launcher.sh",
     "coverage-all": "MOCK_LIGHTSPEED_API=1 TEST_TYPE=e2e COVERAGE=1 ./tools/test-launcher.sh",
-    "als-compile": "yarn workspace @ansible/ansible-language-server compile"
+    "als-compile": "yarn workspace @ansible/ansible-language-server compile",
+    "vite-dev": "vite",
+    "vite-build": "vue-tsc --noEmit && vite build",
+    "vite-preview": "vite preview"
   },
   "version": "0.0.0",
   "packageManager": "yarn@4.5.1",

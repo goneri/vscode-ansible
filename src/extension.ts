@@ -62,7 +62,7 @@ import { CreateAnsibleCollection } from "./features/contentCreator/createAnsible
 import { withInterpreter } from "./features/utils/commandRunner";
 import { IFileSystemWatchers } from "./interfaces/watchers";
 import { showPlaybookGenerationPage } from "./features/lightspeed/playbookGeneration";
-import { showRoleGenerationPage } from "./features/lightspeed/roleGeneration";
+import { MainPanel as RoleGenerationPanel } from "./features/lightspeed/views/roleGeneration";
 import { ExecException, execSync } from "child_process";
 import { CreateAnsibleProject } from "./features/contentCreator/createAnsibleProjectPage";
 import { AddPlugin } from "./features/contentCreator/addPluginPage";
@@ -76,6 +76,7 @@ import { CreateDevfile } from "./features/contentCreator/createDevfilePage";
 import { CreateExecutionEnv } from "./features/contentCreator/createExecutionEnvPage";
 import { CreateDevcontainer } from "./features/contentCreator/createDevcontainerPage";
 import { rightClickEEBuildCommand } from "./features/utils/buildExecutionEnvironment";
+import { MainPanel } from "./features/lightspeed/vue/views/panel";
 
 export let client: LanguageClient;
 export let lightSpeedManager: LightSpeedManager;
@@ -609,7 +610,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
     vscode.commands.registerCommand(
       LightSpeedCommands.LIGHTSPEED_ROLE_GENERATION,
       async () => {
-        await showRoleGenerationPage(context.extensionUri);
+        RoleGenerationPanel.render(context);
       },
     ),
   );
@@ -688,6 +689,12 @@ export async function activate(context: ExtensionContext): Promise<void> {
         });
       },
     ),
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("hello-world.showHelloWorld", async () => {
+      MainPanel.render(context);
+    }),
   );
 
   // install ansible development tools

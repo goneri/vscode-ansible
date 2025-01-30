@@ -23,7 +23,7 @@ import { Log } from "../../utils/logger";
 import { LightspeedExplorerWebviewViewProvider } from "./explorerWebviewViewProvider";
 
 export class LightSpeedManager {
-  private context;
+  public context;
   public settingsManager: SettingsManager;
   public telemetry: TelemetryManager;
   public apiInstance: LightSpeedAPI;

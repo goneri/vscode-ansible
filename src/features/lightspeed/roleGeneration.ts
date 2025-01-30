@@ -147,8 +147,7 @@ export async function showRoleGenerationPage(extensionUri: vscode.Uri) {
       // Enable JavaScript in the webview
       enableScripts: true,
       localResourceRoots: [
-        vscode.Uri.joinPath(extensionUri, "out"),
-        vscode.Uri.joinPath(extensionUri, "media"),
+        vscode.Uri.joinPath(extensionUri, "dist/webview/webviews/lightspeed/"),
       ],
       enableCommandUris: true,
       retainContextWhenHidden: true,
@@ -338,6 +337,7 @@ export async function showRoleGenerationPage(extensionUri: vscode.Uri) {
 
   panel.title = "Ansible Lightspeed";
   panel.webview.html = await getWebviewContent(panel.webview, extensionUri);
+
   panel.webview.postMessage({ command: "init" });
 
   await sendActionEvent(WizardGenerationActionType.OPEN, 1);

@@ -169,7 +169,7 @@ export async function showPlaybookGenerationPage(extensionUri: vscode.Uri) {
       case "generateCode": {
         let { playbook, generationId } = message;
         const outline = message.outline;
-        const darkMode = message.darkMode;
+        // const darkMode = message.darkMode;
         if (!playbook) {
           try {
             const response = await generatePlaybook(
@@ -194,20 +194,20 @@ export async function showPlaybookGenerationPage(extensionUri: vscode.Uri) {
           }
         }
 
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let syntaxHighlighter: any;
-        try {
-          syntaxHighlighter =
-            await require(/* webpackIgnore: true */ "../../syntaxHighlighter/src/syntaxHighlighter");
-        } catch {
-          syntaxHighlighter =
-            await require(/* webpackIgnore: true */ "../../../../syntaxHighlighter/src/syntaxHighlighter");
-        }
-        const html = await syntaxHighlighter.codeToHtml(
-          playbook,
-          darkMode ? "dark-plus" : "light-plus",
-          "yaml",
-        );
+        // let syntaxHighlighter: any;
+        // try {
+        //   syntaxHighlighter =
+        //     await require(/* webpackIgnore: true */ /* @vite-ignore */ "../../syntaxHighlighter/src/syntaxHighlighter");
+        // } catch {
+        //   syntaxHighlighter =
+        //     await require(/* webpackIgnore: true */ /* @vite-ignore */ "../../../../syntaxHighlighter/src/syntaxHighlighter");
+        // }
+        // const html = await syntaxHighlighter.codeToHtml(
+        //   playbook,
+        //   darkMode ? "dark-plus" : "light-plus",
+        //   "yaml",
+        // );
+        const html = playbook;
 
         panel.webview.postMessage({
           command: "playbook",

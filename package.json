@@ -409,7 +409,6 @@
       },
       {
         "command": "ansible.lightspeed.roleGeneration",
-        "enablement": "redhat.ansible.lightspeedExperimentalEnabled",
         "title": "Ansible Lightspeed: Role generation"
       },
       {

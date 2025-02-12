@@ -194,20 +194,20 @@ export async function showPlaybookGenerationPage(extensionUri: vscode.Uri) {
           }
         }
 
-        // let syntaxHighlighter: any;
-        // try {
-        //   syntaxHighlighter =
-        //     await require(/* @vite-ignore */ /* webpackIgnore: true */ "../../syntaxHighlighter/src/syntaxHighlighter");
-        // } catch {
-        //   syntaxHighlighter =
-        //     await require(/* @vite-ignore */ /* webpackIgnore: true */ "../../../../syntaxHighlighter/src/syntaxHighlighter");
-        // }
-        // const html = await syntaxHighlighter.codeToHtml(
-        //   playbook,
-        //   darkMode ? "dark-plus" : "light-plus",
-        //   "yaml",
-        // );
-        const html = "aaa";
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        let syntaxHighlighter: any;
+        try {
+          syntaxHighlighter =
+            await require(/* webpackIgnore: true */ "../../syntaxHighlighter/src/syntaxHighlighter");
+        } catch {
+          syntaxHighlighter =
+            await require(/* webpackIgnore: true */ "../../../../syntaxHighlighter/src/syntaxHighlighter");
+        }
+        const html = await syntaxHighlighter.codeToHtml(
+          playbook,
+          darkMode ? "dark-plus" : "light-plus",
+          "yaml",
+        );
 
         panel.webview.postMessage({
           command: "playbook",
